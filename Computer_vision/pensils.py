@@ -1,9 +1,9 @@
-import os
 import matplotlib.pyplot as plt
 from skimage.color.colorconv import rgb2gray
 from skimage.filters import threshold_otsu
 from skimage.measure import label, regionprops
 from skimage import morphology
+import os
 
 directory = os.listdir(path='images')
 amount = 0
