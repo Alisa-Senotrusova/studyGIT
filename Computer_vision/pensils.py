@@ -9,14 +9,11 @@ directory = os.listdir(path='images')
 amount = 0
 
 for file in directory:
-    img = plt.imread('./images/'+file)
+    img = plt.imread('./images/'+file)[50:-50, 50:-50]
     gray = rgb2gray(img)
     thresh = threshold_otsu(gray)
     binary = gray < thresh
-    erosion = morphology.binary_erosion(binary)
-    dilation = morphology.binary_dilation(erosion)
-    labeled = label(dilation)
-    labeled = labeled[50:-50, 50:-50]
+    labeled = label(binary)
     regions = regionprops(labeled)
     count = 0
     for region in regions:
